@@ -50,6 +50,6 @@ tasks:
       - .venv/bin/pip install --no-deps --editable  .
 
   pre-commit:
-    desc: Install dependencies
+    desc: Install pre-commit hooks.
     cmds:
       - .venv/bin/pre-commit install --install-hooks
