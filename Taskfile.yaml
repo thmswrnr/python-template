@@ -1,0 +1,14 @@
+version: "3"
+
+dotenv:
+  - .env
+
+includes:
+  setup: tasks/setup.yaml
+  qa: tasks/qa.yaml
+
+tasks:
+  default:
+    summary: List all tasks.
+    cmds:
+      - task --list-all

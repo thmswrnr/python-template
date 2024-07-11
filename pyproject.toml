@@ -1,0 +1,27 @@
+[project]
+name = "python-template"
+description = ""
+requires-python = "~=3.12.4"
+version = "0.0.1"
+readme = "README.md"
+
+authors = [
+    { name = "Thomas Werner", email = "el.whappo@gmail.com" }
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+development = [
+    "ruff",
+    "mypy",
+    "pre-commit"
+]
+
+[tool.black]
+line-length = 120
+
+[tool.ruff]
+line-length = 120
+select = ["E", "F", "W", "Q", "UP", "I", "N"]
+ignore = ["N802"]

@@ -1,0 +1,32 @@
+version: "3"
+
+tasks:
+  default:
+    - task: fix
+    - task: check
+
+  fix:
+    - task: format
+    - task: lint
+
+  check:
+    - task: format
+    - task: lint
+    - task: typecheck
+    - task: test
+
+
+  typecheck:
+    - .venv/bin/mypy src/ tests/
+
+  format:
+    cmds:
+      - .venv/bin/ruff format . {{.FLAGS}}
+
+  lint:
+    - .venv/bin/ruff check . {{.FLAGS}}
+
+  test:
+    cmds:
+      - .venv/bin/pytest .
+
