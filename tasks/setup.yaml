@@ -10,13 +10,13 @@ tasks:
       python3.12 binary is not the in path, you can set the environment
       variable PYTHON_BINARY to point to the correct binary.
     cmds:
-      - rm -rf .venv
       - task: create-environment
       - task: compile-dependencies
       - task: install-dependencies
       - task: pre-commit
 
   create-environment:
+    - rm -rf .venv
     - ${PYTHON_BINARY:-python3.12} -m venv .venv
 
   compile-dependencies:
