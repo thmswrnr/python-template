@@ -17,7 +17,7 @@ tasks:
       - task: pre-commit
 
   create-environment:
-    - ${PYTHON_BINARY:-python3.12} -m venv .venv
+    - ${PYTHON_BINARY:-python3.10} -m venv .venv
 
   compile-dependencies:
     desc: Compile dependencies
