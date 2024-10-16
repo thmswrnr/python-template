@@ -10,7 +10,6 @@ tasks:
       python3.12 binary is not the in path, you can set the environment
       variable PYTHON_BINARY to point to the correct binary.
     cmds:
-      - rm -rf .venv
       - task: create-environment
       - task: compile-dependencies
       - task: install-dependencies
@@ -34,22 +33,22 @@ tasks:
       -U to upgrade all packages to their latest version.
     cmds:
       - .venv/bin/pip install pip-tools pip --upgrade
-      - .venv/bin/pip-compile --strip-extras --all-extras pyproject.toml -o requirements/requirements.txt {{.CLI_ARGS}}
+      - .venv/bin/pip-compile --strip-extras --all-extras pyproject.toml -o requirements.txt {{.CLI_ARGS}}
 
   install-dependencies:
     desc: Install dependencies
     preconditions:
-      - sh: test -f requirements/requirements.txt
+      - sh: test -f requirements.txt
         msg: Please compile your dependencies first running setup:update-dependencies
     summary: |
       Uses pip-sync to install the development dependencies
       in the current virtual environment.
     cmds:
       - .venv/bin/pip install pip-tools pip --upgrade
-      - .venv/bin/pip-sync --verbose requirements/requirements.txt
+      - .venv/bin/pip-sync --verbose requirements.txt
       - .venv/bin/pip install --no-deps --editable  .
 
   pre-commit:
-    desc: Install dependencies
+    desc: Install pre-commit hooks.
     cmds:
       - .venv/bin/pre-commit install --install-hooks

@@ -8,9 +8,13 @@ tasks:
   fix:
     - task: format
     - task: lint
+      vars:
+        FLAGS: --fix
 
   check:
     - task: format
+      vars:
+        FLAGS: --check
     - task: lint
     - task: typecheck
     - task: test
